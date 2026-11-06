@@ -1,0 +1,381 @@
+<title>requiem — Legal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Sans:wght@400;500&display=swap">
+
+<style>
+/* Layout: single-column document, sticky nav, hash-routed tabs */
+:root {
+  --bg:      #07070a;
+  --surface: #0f0f14;
+  --border:  #1e1e2a;
+  --text:    #f0ecf9;
+  --text2:   #b4b0c8;
+  --muted:   #58546e;
+  --accent:  #e63946;
+  --acc-dim: rgba(230,57,70,.1);
+  color-scheme: dark;
+  --display: 'Syne', system-ui, sans-serif;
+  --body:    'DM Sans', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg:      #fafaf9;
+    --surface: #f3f2f0;
+    --border:  #e2e0d8;
+    --text:    #111010;
+    --text2:   #4a4848;
+    --muted:   #9a9890;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg:      #fafaf9;
+  --surface: #f3f2f0;
+  --border:  #e2e0d8;
+  --text:    #111010;
+  --text2:   #4a4848;
+  --muted:   #9a9890;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ── Nav ─────────────────────────────────────────────────────────────────── */
+.site-nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: rgba(7,7,10,.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .site-nav { background: rgba(250,250,249,.92); }
+}
+:root[data-theme="light"] .site-nav { background: rgba(250,250,249,.92); }
+
+.nav-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-left:  max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -.04em;
+  background: linear-gradient(130deg, var(--accent), #ff6b78);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: .2rem;
+}
+
+.nav-tab {
+  font-family: var(--body);
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .3rem .7rem;
+  border-radius: 6px;
+  transition: color .14s, background .14s;
+  text-decoration: none;
+}
+
+.nav-tab:hover { color: var(--text2); background: var(--surface); }
+.nav-tab.active { color: var(--accent); background: var(--acc-dim); }
+
+/* ── Page body ───────────────────────────────────────────────────────────── */
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-left:  max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 3.5rem 5rem;
+}
+
+.doc { display: none; }
+.doc.active { display: block; }
+
+/* ── Doc header ──────────────────────────────────────────────────────────── */
+.doc-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.doc-eyebrow {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .6rem;
+}
+
+.doc-title {
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -.03em;
+  color: var(--text);
+  text-wrap: balance;
+  margin-bottom: .6rem;
+}
+
+.doc-meta {
+  font-size: .82rem;
+  color: var(--muted);
+}
+
+/* ── Content ─────────────────────────────────────────────────────────────── */
+.doc-body { max-width: 65ch; }
+
+.doc-body h2 {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--text);
+  margin-top: 2.2rem;
+  margin-bottom: .6rem;
+  text-wrap: balance;
+}
+
+.doc-body p {
+  color: var(--text2);
+  margin-bottom: .9rem;
+}
+
+.doc-body ul {
+  color: var(--text2);
+  padding-left: 1.4rem;
+  margin-bottom: .9rem;
+}
+
+.doc-body li { margin-bottom: .3rem; }
+
+.doc-body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.notice {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: .9rem 1.1rem;
+  margin-bottom: 1.5rem;
+  font-size: .88rem;
+  color: var(--text2);
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding-block: 2rem;
+}
+
+.site-footer .page {
+  padding-block: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
+.footer-logo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: -.04em;
+  background: linear-gradient(130deg, var(--accent), #ff6b78);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-copy { font-size: .78rem; color: var(--muted); }
+</style>
+
+<!-- ── Nav ───────────────────────────────────────────────────────────────── -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <span class="nav-logo">requiem</span>
+    <div class="nav-tabs">
+      <a href="#tos"     class="nav-tab" id="tab-tos">Terms of Service</a>
+      <a href="#privacy" class="nav-tab" id="tab-privacy">Privacy Policy</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Main ──────────────────────────────────────────────────────────────── -->
+<main>
+  <div class="page">
+
+    <!-- Terms of Service -->
+    <article class="doc" id="doc-tos">
+      <header class="doc-header">
+        <div class="doc-eyebrow">Legal</div>
+        <h1 class="doc-title">Terms of Service</h1>
+        <p class="doc-meta">Last updated: November 5, 2026</p>
+      </header>
+      <div class="doc-body">
+        <div class="notice">
+          By adding requiem to your Discord server or using its commands, you agree to these terms. If you do not agree, please remove the bot from your server.
+        </div>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>These Terms of Service govern your use of the requiem Discord bot ("the Bot", "we", "us"). By using the Bot you confirm you are at least 13 years old (or the minimum age required by Discord in your region) and that you accept these terms.</p>
+
+        <h2>2. Use of the Bot</h2>
+        <p>You may use the Bot for lawful purposes only. You agree not to:</p>
+        <ul>
+          <li>Use the Bot to harass, abuse, or harm other users</li>
+          <li>Attempt to exploit, reverse-engineer, or disrupt the Bot</li>
+          <li>Use automated scripts or self-bots to interact with the Bot's economy or game commands</li>
+          <li>Use NSFW commands outside of age-restricted (18+) channels</li>
+          <li>Attempt to bypass permission checks, role restrictions, or cooldown systems</li>
+        </ul>
+
+        <h2>3. Server Owner Responsibilities</h2>
+        <p>Server owners who invite the Bot are responsible for ensuring it is configured appropriately for their community, including restricting NSFW features to age-verified channels as required by Discord's Community Guidelines.</p>
+
+        <h2>4. Economy and Virtual Currency</h2>
+        <p>All coins, items, and virtual currency within the Bot have no real-world monetary value. We reserve the right to reset, adjust, or remove any user's economy data at any time, particularly in cases of suspected abuse or self-botting.</p>
+
+        <h2>5. Availability</h2>
+        <p>We provide the Bot on an "as is" basis. We do not guarantee uninterrupted uptime and may modify, suspend, or discontinue the Bot at any time without prior notice.</p>
+
+        <h2>6. Termination</h2>
+        <p>We reserve the right to blacklist any user or server from using the Bot at our discretion, including for violations of these terms or Discord's own Terms of Service.</p>
+
+        <h2>7. Changes to These Terms</h2>
+        <p>We may update these terms at any time. Continued use of the Bot after changes constitutes acceptance of the revised terms.</p>
+
+        <h2>8. Contact</h2>
+        <p>For questions or concerns regarding these terms, please reach out through our support server on Discord.</p>
+      </div>
+    </article>
+
+    <!-- Privacy Policy -->
+    <article class="doc" id="doc-privacy">
+      <header class="doc-header">
+        <div class="doc-eyebrow">Legal</div>
+        <h1 class="doc-title">Privacy Policy</h1>
+        <p class="doc-meta">Last updated: November 5, 2026</p>
+      </header>
+      <div class="doc-body">
+        <div class="notice">
+          We take your privacy seriously. This policy explains what data requiem collects, why it collects it, and how you can request its removal.
+        </div>
+
+        <h2>1. What We Collect</h2>
+        <p>The Bot collects and stores the minimum data needed to operate its features:</p>
+        <ul>
+          <li><strong>Discord User IDs</strong> — to track economy balances, XP, warnings, reminders, and other per-user data</li>
+          <li><strong>Discord Server (Guild) IDs</strong> — to store per-server configuration settings</li>
+          <li><strong>Discord Channel and Role IDs</strong> — for features such as logging, welcome messages, and auto-roles</li>
+          <li><strong>Message content</strong> — only where explicitly required (e.g. sticky messages, auto-responders, snipe commands). This data is not retained beyond its functional purpose.</li>
+          <li><strong>Moderation records</strong> — warnings, bans, mutes, and case history tied to user IDs</li>
+        </ul>
+
+        <h2>2. What We Do Not Collect</h2>
+        <p>We do not collect, store, or sell:</p>
+        <ul>
+          <li>Usernames, email addresses, or passwords</li>
+          <li>Payment or financial information</li>
+          <li>Personal information beyond what Discord provides via its API</li>
+          <li>Message content in bulk or outside of features that explicitly require it</li>
+        </ul>
+
+        <h2>3. How Data Is Used</h2>
+        <p>Data is used solely to provide the Bot's features (economy, moderation, levels, games, etc.). We do not share your data with third parties, and we do not use it for advertising purposes.</p>
+
+        <h2>4. Data Retention</h2>
+        <p>Data is retained for as long as it is needed to provide the Bot's features. Economy and level data persists until a user requests deletion. Snipe and ghostping data is temporary and cleared regularly. Server configuration data is removed when the Bot leaves a server.</p>
+
+        <h2>5. Your Rights</h2>
+        <p>You may request deletion of your personal data at any time by contacting us through our support server. We will remove your user data (economy, XP, moderation history, etc.) within a reasonable time following a verified request.</p>
+
+        <h2>6. Third-Party Services</h2>
+        <p>Certain features (such as music playback, Last.fm integration, and Spotify) connect to third-party services. Use of those features is also subject to those services' own privacy policies.</p>
+
+        <h2>7. Changes to This Policy</h2>
+        <p>We may update this policy at any time. Continued use of the Bot after changes constitutes acceptance of the revised policy.</p>
+
+        <h2>8. Contact</h2>
+        <p>For privacy-related requests or questions, please contact us through our support server on Discord.</p>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="page">
+    <span class="footer-logo">requiem</span>
+    <span class="footer-copy">© 2026 requiem · v5</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  function getHash() {
+    var h = window.location.hash.replace('#', '');
+    return (h === 'privacy') ? 'privacy' : 'tos';
+  }
+
+  function show(which) {
+    var docs = ['tos', 'privacy'];
+    docs.forEach(function (id) {
+      var doc = document.getElementById('doc-' + id);
+      var tab = document.getElementById('tab-' + id);
+      if (id === which) {
+        doc.classList.add('active');
+        tab.classList.add('active');
+      } else {
+        doc.classList.remove('active');
+        tab.classList.remove('active');
+      }
+    });
+  }
+
+  show(getHash());
+
+  window.addEventListener('hashchange', function () {
+    show(getHash());
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}());
+</script>
